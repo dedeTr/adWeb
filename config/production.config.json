@@ -1,0 +1,7 @@
+{
+   "MongoDB":{
+      "uri": "mongodb+srv://dede:pass123@cluster0.kpxxw.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+      "dbName": "account"
+   },
+   "AuthSecret": "justASecret"
+}
