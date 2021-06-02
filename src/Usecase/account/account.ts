@@ -141,4 +141,18 @@ export class AccountUsecase{
 
       return Promise.resolve(apiKey);
    }
+
+   async addViewsPub(API_KEY: string, count: number): Promise<boolean>{
+      try {
+         var res = await this.accountAdminDomain.addViewsPub(API_KEY, count);
+      } catch (error) {
+         return Promise.reject(error);
+      }
+
+      return Promise.resolve(res);
+   }
+
+   async getAccountPubByAPIKey(API_KEY: string): Promise<AccountAdminType | null>{
+      return await this.accountAdminDomain.getAccountPubByAPIKey(API_KEY);
+   }
 }

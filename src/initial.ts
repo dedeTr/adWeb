@@ -7,7 +7,7 @@ import { AdContentDomain } from './domain/adContent/adContent';
 import { AdContentDBResource } from './domain/adContent/database';
 import http from './server/http/http';
 import { AccountUsecase } from './Usecase/account/account';
-import { AdContentUsecase } from './Usecase/adCount/adCount';
+import { AdContentUsecase } from './Usecase/adContent/adContent';
 
 
 type InternalToolsUsecase = {

@@ -1,5 +1,5 @@
 export type AdcontentType = {
-    embedded_code: string
+    url: string
     description: string
     time_start: number
     time_expire: number

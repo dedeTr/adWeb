@@ -44,11 +44,13 @@ function initHttpRoutes(){
     app.post('/register', accountHandler.registerHandler);
     app.post('/login', accountHandler.loginHandler);
     app.post('/upload/twitter', sessionMiddleware.validateSessionMiddleware, adContentHandler.twitterUploadHandler)
+    app.get('/get-all-ad', sessionMiddleware.validateSessionMiddleware, adContentHandler.getAllAdHandler)
     
     //publisher
     app.post('/publisher-register', accountHandler.registerPubHandler);
     app.post('/publisher-login', accountHandler.loginPubHandler);
-    app.get('/get/twitter', sessionMiddleware.validateSessionMiddleware, adContentHandler.twitterUploadHandler)
+    //publisher-client
+    app.get('/embed-code/twitter/:API_KEY/:width/:total_res', adContentHandler.twittergetHandler)
 
    //error handler
    app.use(function(err: AdwebError, req: express.Request, res: express.Response, next: express.NextFunction){

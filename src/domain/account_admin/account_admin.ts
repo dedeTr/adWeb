@@ -6,6 +6,8 @@ export interface AccountAdminResource {
    insert(data: AccountAdminType): Promise<boolean>
    insertPub(data: AccountAdminType): Promise<boolean>
    getAPIKey(username: string): Promise<string>
+   getAccountPubByAPIKey(API_KEY: string): Promise<AccountAdminType | null>
+   addViewsPub(API_KEY: string, count: number): Promise<boolean>
 }
 
 export class AccountAdminDomain{
@@ -23,8 +25,16 @@ export class AccountAdminDomain{
       return this.dbResource.getAccountPub(username);
    }
 
+   getAccountPubByAPIKey(API_KEY: string): Promise<AccountAdminType | null>{
+      return this.dbResource.getAccountPubByAPIKey(API_KEY);
+   }
+
    getAPIKey(username: string): Promise<string>{
       return this.dbResource.getAPIKey(username);
+   }
+
+   addViewsPub(API_KEY: string, count: number): Promise<boolean>{
+      return this.dbResource.addViewsPub(API_KEY, count);
    }
 
    async insert(data: AccountAdminType): Promise<boolean>{

@@ -62,6 +62,30 @@ export class AccountAdminDBResource implements AccountAdminResource {
       return Promise.resolve(account);
    }
 
+   async getAccountPubByAPIKey(API_KEY: string): Promise<AccountAdminType | null>{
+      try {
+         var account = await this.collectionPub.findOne({ api_key: API_KEY });
+      } catch (error) {
+         return Promise.reject(commonError.databaseError(error.message));
+      }
+
+      if (!account) {
+         return Promise.resolve(null);
+      }
+
+      return Promise.resolve(account);
+   }
+
+   async addViewsPub(API_KEY: string, count: number): Promise<boolean>{
+      try {
+        await this.collectionPub.updateOne({ api_key: API_KEY }, { $inc: { views: count } });
+      } catch (error) {
+         return Promise.reject(commonError.databaseError(error.message));
+      }
+
+      return Promise.resolve(true);
+   }
+
    async getAPIKey(username: string): Promise<string>{
       try {
          var account = await this.collectionPub.findOne({ username: username });
